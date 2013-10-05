@@ -1,0 +1,32 @@
+body {
+	font-size: 72.5%; 
+	font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+}
+
+table {
+	font-size: 1em;
+}
+
+.demo-description {
+	clear: both;
+	padding: 12px;
+	font-size: 1.3em;
+	line-height: 1.4em; 
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+
+.colunaTopo, .colunaEsquerda, .colunaCentro, .colunaDieita, .colunaBase {
+	float:left;
+	display:block;
+	border:1px solid #000;
+}
+
+.colunaTopo {width:100%}
+.colunaEsquerda {width:13%}
+.colunaCentro {width:65%}
+.colunaDieita {width:20%}
+.colunaBase {width:100%}
+.colunaFull {width:100% !important}
