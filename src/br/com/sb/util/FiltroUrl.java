@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(
 		description = "Filtro de controle geral", 
 		urlPatterns = { 
-				"/*", 
+				"/*"
+				+ "", 
 				"/filtro"
 		})
 public class FiltroUrl extends HttpServlet {
