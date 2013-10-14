@@ -1,4 +1,4 @@
-package br.com.sb.utilitarios;
+package br.com.sb.util;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -26,24 +26,39 @@ public class FiltroUrl extends HttpServlet {
     
     /**
      * Metodo que faz todo o processamento de url e filtra a segurança da aplicação.
+     * @throws IOException 
+     * @throws ServletException 
      */
-    protected void prossessRequest(HttpServletRequest request, HttpServletResponse response){
-    	
-    	String url = request.getRequestURI();
-    	String template = "template.jsp";
-    	String urlFinal = url;
-    	
-    	//Ferifica a altenticação do usuario em questão...
-    	getAutenticacao(request);
+    protected void prossessRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    	try {
     		
-    	//Se deslogado manda para a pagina de login
-    	
-    	//Quebra a Url para montar o endereço da pagina
-    	
-    	//testa se a Url da pagina é compativel... caso não reenvia para a pagina de erro. 
-    	
-    	//Chama a pagina template, passando o parametro do 
-    	
+    	 	String url = request.getRequestURI();
+        	String template = "template.jsp";
+        	//SchoolBox
+        	String urlFinal = "";
+        	String contexto = "";
+        	contexto = url.substring(0,10);
+        	urlFinal = url.substring(10);
+        	
+        	if(urlFinal.equals("")){
+        		urlFinal = "index.jsp";
+        	}
+        	
+        	//Ferifica a altenticação do usuario em questão...
+        	getAutenticacao(request);
+        		
+        	//Se deslogado manda para a pagina de login
+        	
+        	//Quebra a Url para montar o endereço da pagina
+        	
+        	//testa se a Url da pagina é compativel... caso não reenvia para a pagina de erro. 
+        	
+        	//Chama a pagina template, passando o parametro do 
+    		request.getRequestDispatcher(contexto+"/jsp/"+template).include(request, response);
+			
+		} catch (IOException e) {
+			response.sendError(500);
+		}
     }
 
     
