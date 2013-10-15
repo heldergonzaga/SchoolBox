@@ -3,7 +3,7 @@
  <%! String ctx ; %>
  <%
  	ctx = request.getContextPath();
-	String pathPagina = "inicial";
+	String pathPagina = "paginas/index.jsp";
 
  	if(request.getAttribute("pathPagina")!= null ){
  		pathPagina	= (String)request.getAttribute("pathPagina");
