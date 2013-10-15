@@ -14,7 +14,7 @@ import br.com.sb.controller.UsuarioController;
  * Servlet de filtro, para segurança e controle de url's de acesso
  */
 @WebServlet(
-		description = "Filtro de controle geral", 
+		description = "Filtro de url controle geral", 
 		urlPatterns = { 
 				"*.sb", 
 				"/filtro"
