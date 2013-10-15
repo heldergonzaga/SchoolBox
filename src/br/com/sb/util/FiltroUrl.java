@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.sb.controller.UsuarioController;
+
 /**
  * Servlet de filtro, para segurança e controle de url's de acesso
  */
@@ -66,7 +68,8 @@ public class FiltroUrl extends HttpServlet {
         	//Chama a pagina template, passando o parametro do 
         	try {
         		
-        		Class.forName("br.com.sb.controller."+controllerPagina+"Controller").newInstance();
+        	UsuarioController controller =  (UsuarioController)Class.forName("br.com.sb.controller."+controllerPagina+"Controller").newInstance();
+			
 			
 			} catch (InstantiationException e) {
 			
