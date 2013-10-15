@@ -3,7 +3,8 @@ package br.com.sb.controller;
 import javax.servlet.http.HttpServletRequest;
 
 
-public class UsuarioController {
+public class UsuarioController
+{
 	public UsuarioController() {
 		
 		
