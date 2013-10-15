@@ -2,7 +2,11 @@
     pageEncoding="ISO-8859-1"%>
  <%! String ctx ; %>
  <%
- 	 ctx = request.getContextPath();
-	 String pagina = "inicial";
-	 String urlPagina= "paginas/"+pagina+".jsp";   
+ 	ctx = request.getContextPath();
+	String pathPagina = "inicial";
+
+ 	if(request.getAttribute("pathPagina")!= null ){
+ 		pathPagina	= (String)request.getAttribute("pathPagina");
+ 	}
+
  %>

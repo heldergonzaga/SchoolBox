@@ -18,7 +18,7 @@
 	</div>
 	
 	<div class="colunaCentro">
-		<jsp:include page="<%=urlPagina%>" >
+		<jsp:include page="<%=pathPagina%>" >
 			<jsp:param name="mensagem"  value="teste" />
 		</jsp:include>
 	</div>
