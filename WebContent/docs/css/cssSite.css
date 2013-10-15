@@ -21,7 +21,7 @@ table {
 .colunaTopo, .colunaEsquerda, .colunaCentro, .colunaDieita, .colunaBase {
 	float:left;
 	display:block;
-	border:1px solid #000;
+	/* border:1px solid #000; */
 }
 
 .colunaTopo {width:100%}
