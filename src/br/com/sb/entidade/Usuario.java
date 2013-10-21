@@ -5,6 +5,9 @@ public class Usuario {
 	Integer idUsuario;
 	Integer idCargo;
 	String nome;
+	String sobrenome;
+	
+	String ultimoNome;
 	String cpf;
 	String email;
 	String bairro;
@@ -14,6 +17,7 @@ public class Usuario {
 	String numero;
 	String senha;
 	String login;
+	
 	
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -32,6 +36,12 @@ public class Usuario {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getUltimoNome() {
+		return ultimoNome;
+	}
+	public void setUltimoNome(String ultimoNome) {
+		this.ultimoNome = ultimoNome;
 	}
 	public String getCpf() {
 		return cpf;
@@ -87,6 +97,11 @@ public class Usuario {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	
+	public String getSobrenome() {
+		return sobrenome;
+	}
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
 	
 }

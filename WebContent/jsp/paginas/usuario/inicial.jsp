@@ -1,29 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<h1>Listagem de usuarios</h1>
+<h1>Usuarios</h1>
 
-<table>
-	<thead>
-		<tr>
-			<td>id</td>
-			<td>Nome</td>
-			<td>Data Adesao</td>
-			<td>Descricao</td>
-			<td></td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>0</td>
-			<td>Fulano de tal </td>
-			<td>12/10/2014</td>
-			<td>Funcionario da teste</td>
-			<td>
-				<a href="#" class="det">Detalhar</a> 
-				<a href="#" class="editar">editar</a>
-				<a href="#" class="excluir">X</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<%@include file="/jsp/inc/incMensagem.jsp" %>
+
+ <table border=1>
+        <thead>
+            <tr>
+                <th>Id</th> 
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th colspan=2>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${usuarios}" var="usuario">
+                <tr>
+                    <td><c:out value="${usuario.idUsuario}" /></td>
+                    <td>
+                    	<a href='UsuarioController?acao=editar&idUsuario=<c:out value="${usuario.idUsuario}"/>'><c:out value="${usuario.nome}" /></a>
+                    </td>
+                    <td><c:out value="${usuario.sobrenome}" /></td>
+                    <td><c:out value="${usuario.email}" /></td>
+                    <td><a href="UsuarioController?acao=deletar&idUsuario=<c:out value="${usuario.idUsuario}"/>" class="del" >Deletar</a></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <p><a href="UsuarioController?acao=inserir" class="insert">Adicionar Usuário</a></p>

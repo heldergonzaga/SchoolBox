@@ -23,18 +23,19 @@ public class UsuarioDAO {
 	public void cadastrarUsuario(Usuario usuario) throws SQLException{
 		
 		try {
-			pstmt = conn.prepareStatement("insert into usuario set idcargo = ?, nome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ?");
+			pstmt = conn.prepareStatement("insert into usuario set idcargo = ?,  nome= ?, sobrenome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ?");
 			pstmt.setInt(1, usuario.getIdCargo());
 			pstmt.setString(2, usuario.getNome());
-			pstmt.setString(3, usuario.getCpf());
-			pstmt.setString(4, usuario.getEmail());
-			pstmt.setString(5, usuario.getBairro());
-			pstmt.setString(6, usuario.getCidade());
-			pstmt.setString(7, usuario.getUf());
-			pstmt.setString(8, usuario.getComplemento());
-			pstmt.setString(9, usuario.getNumero());
-			pstmt.setString(10, usuario.getSenha());
-			pstmt.setString(11, usuario.getLogin());
+			pstmt.setString(3, usuario.getSobrenome());
+			pstmt.setString(4, usuario.getCpf());
+			pstmt.setString(5, usuario.getEmail());
+			pstmt.setString(6, usuario.getBairro());
+			pstmt.setString(7, usuario.getCidade());
+			pstmt.setString(8, usuario.getUf().trim());
+			pstmt.setString(9, usuario.getComplemento());
+			pstmt.setString(10, usuario.getNumero());
+			pstmt.setString(11, usuario.getSenha());
+			pstmt.setString(12, usuario.getLogin());
 			
 			pstmt.executeUpdate();
 			
@@ -49,19 +50,20 @@ public class UsuarioDAO {
 	public void alterarUsuario(Usuario usuario) throws SQLException{
 		
 		try {
-			pstmt = conn.prepareStatement("update usuario set idcargo = ?, nome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ? where idusuario = ?");	
+			pstmt = conn.prepareStatement("update usuario set idcargo = ?, nome= ?, sobrenome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ? where idusuario = ?");	
 			pstmt.setInt(1, usuario.getIdCargo());
 			pstmt.setString(2, usuario.getNome());
-			pstmt.setString(3, usuario.getCpf());
-			pstmt.setString(4, usuario.getEmail());
-			pstmt.setString(5, usuario.getBairro());
-			pstmt.setString(6, usuario.getCidade());
-			pstmt.setString(7, usuario.getUf());
-			pstmt.setString(8, usuario.getComplemento());
-			pstmt.setString(9, usuario.getNumero());
-			pstmt.setString(10, usuario.getSenha());
-			pstmt.setString(11, usuario.getLogin());
-			pstmt.setInt(12, usuario.getIdUsuario());
+			pstmt.setString(3, usuario.getSobrenome());
+			pstmt.setString(4, usuario.getCpf());
+			pstmt.setString(5, usuario.getEmail());
+			pstmt.setString(6, usuario.getBairro());
+			pstmt.setString(7, usuario.getCidade());
+			pstmt.setString(8, usuario.getUf().trim());
+			pstmt.setString(9, usuario.getComplemento());
+			pstmt.setString(10, usuario.getNumero());
+			pstmt.setString(11, usuario.getSenha());
+			pstmt.setString(12, usuario.getLogin());
+			pstmt.setInt(13, usuario.getIdUsuario());
 			
 			pstmt.executeUpdate();
 			
@@ -72,18 +74,19 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public Usuario buscarUsuario(Usuario usuario) throws SQLException{
+	public Usuario buscarUsuario(Integer idUsuario) throws SQLException{
 		
 		Usuario resultUsuario = null;
 		
 		try {
-			pstmt = conn.prepareStatement("select idcargo, nome, cpf, email, bairro, cidade, uf, complemento, numero, senha, login from usuario where idusuario = ?");
-			pstmt.setInt(1, usuario.getIdUsuario());
+			pstmt = conn.prepareStatement("select idusuario, idcargo, nome, sobrenome, cpf, email, bairro, cidade, uf, complemento, numero, senha, login from usuario where idusuario = ?");
+			pstmt.setInt(1, idUsuario);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				resultUsuario = new Usuario();
+				resultUsuario.setIdUsuario(rs.getInt("idusuario"));
 				resultUsuario.setBairro(rs.getString("bairro"));
 				resultUsuario.setCidade(rs.getString("cidade"));
 				resultUsuario.setComplemento(rs.getString("complemento"));
@@ -92,6 +95,7 @@ public class UsuarioDAO {
 				resultUsuario.setIdCargo(rs.getInt("idcargo"));
 				resultUsuario.setLogin(rs.getString("login"));
 				resultUsuario.setNome(rs.getString("nome"));
+				resultUsuario.setSobrenome(rs.getString("sobrenome"));
 				resultUsuario.setNumero(rs.getString("numero"));
 				resultUsuario.setSenha(rs.getString("senha"));
 				resultUsuario.setUf(rs.getString("uf"));
@@ -111,11 +115,12 @@ public class UsuarioDAO {
 		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		
 		try {
-			pstmt = conn.prepareStatement("select idcargo, nome, cpf, email, bairro, cidade, uf, complemento, numero, senha, login from usuario");
+			pstmt = conn.prepareStatement("select idUsuario, idcargo, nome, sobrenome, cpf, email, bairro, cidade, uf, complemento, numero, senha, login from usuario");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				Usuario usuario = new Usuario();
+				usuario.setIdUsuario(rs.getInt("idusuario"));
 				usuario.setBairro(rs.getString("bairro"));
 				usuario.setCidade(rs.getString("cidade"));
 				usuario.setComplemento(rs.getString("complemento"));
@@ -124,6 +129,7 @@ public class UsuarioDAO {
 				usuario.setIdCargo(rs.getInt("idcargo"));
 				usuario.setLogin(rs.getString("login"));
 				usuario.setNome(rs.getString("nome"));
+				usuario.setSobrenome(rs.getString("sobrenome"));
 				usuario.setNumero(rs.getString("numero"));
 				usuario.setSenha(rs.getString("senha"));
 				usuario.setUf(rs.getString("uf"));
@@ -141,11 +147,11 @@ public class UsuarioDAO {
 		return listaUsuarios;
 	}
 	
-	public void deletarUsuario(Usuario usuario) throws SQLException{
+	public void deletarUsuario(Integer idusuario) throws SQLException{
 		
 		try {
 			pstmt = conn.prepareStatement("delete from usuario where idusuario= ?");
-			pstmt.setInt(1, usuario.getIdUsuario());
+			pstmt.setInt(1, idusuario);
 			
 			pstmt.executeUpdate();
 			
@@ -156,25 +162,5 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public static void main(String[] args) throws SQLException {
-		
-		/*Usuario usuario = new Usuario();
-		usuario.setIdUsuario(new Integer(2));
-		usuario.setBairro("teste");
-		usuario.setCidade("teste");
-		usuario.setComplemento("teste");
-		usuario.setCpf("55555555555");
-		usuario.setEmail("sanuse@sanuse.com.br");
-		usuario.setIdCargo(new Integer(1));
-		usuario.setLogin("sanuse");
-		usuario.setNome("sanuse queiroz");
-		usuario.setNumero("test");
-		usuario.setSenha("1234");
-		usuario.setUf("df");
-		
-		new UsuarioDAO().deletarUsuario(usuario);
-		
-		*/
-		
-	}
+	
 }

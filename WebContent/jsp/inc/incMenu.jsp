@@ -3,7 +3,7 @@
 <ul id="menu">
 
 	<li><a href="/SchoolBox/">Home</a></li>
-	<li><a href="/SchoolBox/usuario/inicial.sb">Usuários</a></li>
+	<li><a href="/SchoolBox/UsuarioController?acao=listar">Usuários</a></li>
 	<li><a href="#">Entidades</a></li>
 	<li><a href="#">Clientes</a></li>
 	<li class="ui-state-disabled"><a href="#">Controle Financeiro</a></li>

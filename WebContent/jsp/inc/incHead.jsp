@@ -11,10 +11,13 @@
 <script src="<%=ctx%>/docs/ui/jquery.ui.widget.js"></script>
 <script src="<%=ctx%>/docs/ui/jquery.ui.position.js"></script>
 <script src="<%=ctx%>/docs/ui/jquery.ui.menu.js"></script>
+<script src="<%=ctx%>/docs/js/jquery.mask.min.js"></script>
+<script src="<%=ctx%>/docs/js/jquery.validate.min.js"></script>  
+
 <link rel="stylesheet" href="<%=ctx%>/docs/css/cssSite.css">
 <script>
 	$(function() {
-		$("#menu").menu();
+		$("#menu").menu(); 
 	});
 </script>
 <style>
