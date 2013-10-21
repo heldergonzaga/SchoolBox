@@ -30,3 +30,6 @@ table {
 .colunaDieita {width:20%}
 .colunaBase {width:100%}
 .colunaFull {width:100% !important}
+
+.error{color:red}
+input.error {border:1px solid red} 
