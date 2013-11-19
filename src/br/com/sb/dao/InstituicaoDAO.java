@@ -24,7 +24,7 @@ public class InstituicaoDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("insert into instituicao set idusuario = ?, nome = ?, estado = ?, endereco = ?, telefone = ?, email = ?");
-			pstmt.setInt(1, instituicao.getIdUsuario());
+			pstmt.setInt(1, instituicao.getUsuario().getIdUsuario());
 			pstmt.setString(2, instituicao.getNome());
 			pstmt.setString(3, instituicao.getEstado());
 			pstmt.setString(4, instituicao.getEndereco());
@@ -45,7 +45,7 @@ public class InstituicaoDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("update instituicao set idusuario = ?, nome = ?, estado = ?, endereco = ?, telefone = ?, email = ? where idinstituicao = ?");	
-			pstmt.setInt(1, instituicao.getIdUsuario());
+			pstmt.setInt(1, instituicao.getUsuario().getIdUsuario());
 			pstmt.setString(2, instituicao.getNome());
 			pstmt.setString(3, instituicao.getEstado());
 			pstmt.setString(4, instituicao.getEndereco());
@@ -67,14 +67,15 @@ public class InstituicaoDAO {
 		Instituicao resultInstituicao = null;
 		
 		try {
-			pstmt = conn.prepareStatement("select idusuario, nome, estado, endereco, telefone, email from instituicao where idinstituicao = ?");
+			pstmt = conn.prepareStatement("select idinstituicao, idusuario, nome, estado, endereco, telefone, email from instituicao where idinstituicao = ?");
 			pstmt.setInt(1, instituicao.getIdInstituicao());
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				resultInstituicao = new Instituicao();
-				resultInstituicao.setIdUsuario(rs.getInt("idusuario"));
+				resultInstituicao.setIdInstituicao(rs.getInt("idinstituicao"));
+				resultInstituicao.getUsuario().setIdUsuario(rs.getInt("idusuario"));
 				resultInstituicao.setNome(rs.getString("nome"));
 				resultInstituicao.setEstado(rs.getString("estado"));
 				resultInstituicao.setEndereco(rs.getString("endereco"));
@@ -96,13 +97,15 @@ public class InstituicaoDAO {
 		List<Instituicao> listaInstituicoes = new ArrayList<Instituicao>();
 		
 		try {
-			pstmt = conn.prepareStatement("select idusuario, nome, estado, endereco, telefone, email from instituicao from instituicao");
+			pstmt = conn.prepareStatement("select idinstituicao, idusuario, nome, estado, endereco, telefone, email from instituicao");
 			
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				
 				Instituicao instituicao = new Instituicao();
-				instituicao.setIdUsuario(rs.getInt("idusuario"));
+				instituicao.setIdInstituicao(rs.getInt("idinstituicao"));
+				instituicao.getUsuario().setIdUsuario(rs.getInt("idusuario"));
 				instituicao.setNome(rs.getString("nome"));
 				instituicao.setEstado(rs.getString("estado"));
 				instituicao.setEndereco(rs.getString("endereco"));
@@ -125,7 +128,7 @@ public class InstituicaoDAO {
 	public void deletarInstituicao(Instituicao instituicao) throws SQLException{
 		
 		try {
-			pstmt = conn.prepareStatement("delete from instituicao where isinstituicao = ?");
+			pstmt = conn.prepareStatement("delete from instituicao where idinstituicao = ?");
 			pstmt.setInt(1, instituicao.getIdInstituicao());
 			
 			pstmt.executeUpdate();
@@ -135,6 +138,40 @@ public class InstituicaoDAO {
 		}finally{
 			pstmt.close();
 		}
+	}
+	
+	public List<Instituicao> listarInstituicoesIdUsuario(Integer idUsuario) throws SQLException{
+
+		List<Instituicao> listaInstituicoes = new ArrayList<Instituicao>();
+		
+		try {
+			pstmt = conn.prepareStatement("select idinstituicao, idusuario, nome, estado, endereco, telefone, email from instituicao where idusuario = ?");
+			
+			pstmt.setInt(1, idUsuario);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				Instituicao instituicao = new Instituicao();
+				instituicao.getUsuario().setIdUsuario(rs.getInt("idusuario"));
+				instituicao.setNome(rs.getString("nome"));
+				instituicao.setEstado(rs.getString("estado"));
+				instituicao.setEndereco(rs.getString("endereco"));
+				instituicao.setTelefone(rs.getString("telefone"));
+				instituicao.setEmail(rs.getString("email"));
+				instituicao.setIdInstituicao(rs.getInt("idinstituicao"));
+				listaInstituicoes.add(instituicao);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pstmt.close();
+			rs.close();
+		}
+		
+		return listaInstituicoes;
 	}
 	
 	public static void main(String[] args) throws SQLException {

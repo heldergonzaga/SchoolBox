@@ -1,5 +1,8 @@
 package br.com.sb.entidade;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Usuario {
 
 	Integer idUsuario;
@@ -19,6 +22,15 @@ public class Usuario {
 	String login;
 	
 	
+	Integer statusCadastro;
+	Date dataCadastro; 
+	
+	public Integer getStatusCadastro() {
+		return statusCadastro;
+	}
+	public void setStatusCadastro(Integer statusCadastro) {
+		this.statusCadastro = statusCadastro;
+	}
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
@@ -88,6 +100,12 @@ public class Usuario {
 	public String getSenha() {
 		return senha;
 	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
@@ -103,5 +121,7 @@ public class Usuario {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
+
+
 	
 }

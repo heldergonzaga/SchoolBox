@@ -5,32 +5,37 @@ import java.sql.Date;
 public class Contrato {
 
 	Integer idContrato;
-	Integer idUsuario;
-	Integer idBox;
 	Date dataInicial;
 	Date dataFinal;
 	String termoDeAdesao;
 	String renovacaoAuto;
 	String periodo;
 	String valorPeriodo;
+	Usuario usuario;
+	Box box;
 	
+	public Contrato(){
+		setBox(new Box());
+		setUsuario(new Usuario());
+	}
+	
+	public Box getBox() {
+		return box;
+	}
+	public void setBox(Box box) {
+		this.box = box;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Integer getIdContrato() {
 		return idContrato;
 	}
 	public void setIdContrato(Integer idContrato) {
 		this.idContrato = idContrato;
-	}
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-	public Integer getIdBox() {
-		return idBox;
-	}
-	public void setIdBox(Integer idBox) {
-		this.idBox = idBox;
 	}
 	public Date getDataInicial() {
 		return dataInicial;

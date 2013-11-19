@@ -24,7 +24,7 @@ public class LocalizacaoDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("insert into localizacao set idInstituicao = ?, nome = ?");
-			pstmt.setInt(1, localizacao.getIdInstituicao());
+			pstmt.setInt(1, localizacao.getInstituicao().getIdInstituicao());
 			pstmt.setString(2, localizacao.getNome());
 			
 			pstmt.executeUpdate();
@@ -41,7 +41,7 @@ public class LocalizacaoDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("update localizacao set idInstituicao = ?, nome = ? where idlocalizacao = ?");	
-			pstmt.setInt(1, localizacao.getIdInstituicao());
+			pstmt.setInt(1, localizacao.getInstituicao().getIdInstituicao());
 			pstmt.setString(2, localizacao.getNome());
 			pstmt.setInt(3, localizacao.getIdLocalizacao());
 			
@@ -59,14 +59,15 @@ public class LocalizacaoDAO {
 		Localizacao resultLocalizacao = null;
 		
 		try {
-			pstmt = conn.prepareStatement("select idinstituicao, nome from localizacao where idlocalizacao = ?");
+			pstmt = conn.prepareStatement("select idlocalizacao, idinstituicao, nome from localizacao where idlocalizacao = ?");
 			pstmt.setInt(1, localizacao.getIdLocalizacao());
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				resultLocalizacao = new Localizacao();
-				resultLocalizacao.setIdInstituicao(rs.getInt("idinstituicao"));
+				resultLocalizacao.setIdLocalizacao(rs.getInt("idlocalizacao"));
+				resultLocalizacao.getInstituicao().setIdInstituicao(rs.getInt("idinstituicao"));
 				resultLocalizacao.setNome(rs.getString("nome"));
 			}
 			
@@ -90,8 +91,8 @@ public class LocalizacaoDAO {
 			
 			while(rs.next()){
 				Localizacao localizacao = new Localizacao();
-				localizacao.setIdInstituicao(rs.getInt("idLocalizacao"));
-				localizacao.setIdLocalizacao(rs.getInt("idInstituicao"));
+				localizacao.getInstituicao().setIdInstituicao(rs.getInt("idInstituicao"));
+				localizacao.setIdLocalizacao(rs.getInt("idLocalizacao"));
 				localizacao.setNome(rs.getString("nome"));
 				
 				listaLocalizacoes.add(localizacao);
@@ -120,6 +121,34 @@ public class LocalizacaoDAO {
 		}finally{
 			pstmt.close();
 		}
+	}
+	
+	public List<Localizacao> listarLocalizacoesIdInstituicao(Integer idInstituicao) throws SQLException{
+
+		List<Localizacao> listaLocalizacoes = new ArrayList<Localizacao>();
+		
+		try {
+			pstmt = conn.prepareStatement("select idLocalizacao, idInstituicao, nome from localizacao where idinstituicao = ?");
+			pstmt.setInt(1, idInstituicao);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Localizacao localizacao = new Localizacao();
+				localizacao.getInstituicao().setIdInstituicao(rs.getInt("idLocalizacao"));
+				localizacao.setIdLocalizacao(rs.getInt("idInstituicao"));
+				localizacao.setNome(rs.getString("nome"));
+				
+				listaLocalizacoes.add(localizacao);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pstmt.close();
+			rs.close();
+		}
+		
+		return listaLocalizacoes;
 	}
 	
 	public static void main(String[] args) throws SQLException {

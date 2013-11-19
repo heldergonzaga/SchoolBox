@@ -5,7 +5,11 @@ public class Box {
 	Integer idBox;
 	String senha;
 	Integer numero;
-	Integer idLocalizacao;
+	Localizacao localizacao;
+	
+	public Box(){
+		setLocalizacao(new Localizacao());
+	}
 	
 	public Integer getIdBox() {
 		return idBox;
@@ -25,13 +29,13 @@ public class Box {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	public Integer getIdLocalizacao() {
-		return idLocalizacao;
+
+	public Localizacao getLocalizacao() {
+		return localizacao;
 	}
-	public void setIdLocalizacao(Integer idLocalizacao) {
-		this.idLocalizacao = idLocalizacao;
+
+	public void setLocalizacao(Localizacao localizacao) {
+		this.localizacao = localizacao;
 	}
-	
-	
 	
 }

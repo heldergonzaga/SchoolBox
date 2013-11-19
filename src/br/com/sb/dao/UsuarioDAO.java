@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,8 @@ public class UsuarioDAO {
 	public void cadastrarUsuario(Usuario usuario) throws SQLException{
 		
 		try {
-			pstmt = conn.prepareStatement("insert into usuario set idcargo = ?,  nome= ?, sobrenome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ?");
+			
+			pstmt = conn.prepareStatement("insert into usuario set  idcargo = ?,  nome= ?, sobrenome= ?, cpf= ?, email= ?, bairro= ?, cidade= ?, uf= ?, complemento= ?, numero= ?, senha= ?, login= ?, statusCadastro= ?, dataCadastro= ?");
 			pstmt.setInt(1, usuario.getIdCargo());
 			pstmt.setString(2, usuario.getNome());
 			pstmt.setString(3, usuario.getSobrenome());
@@ -36,6 +38,8 @@ public class UsuarioDAO {
 			pstmt.setString(10, usuario.getNumero());
 			pstmt.setString(11, usuario.getSenha());
 			pstmt.setString(12, usuario.getLogin());
+			pstmt.setInt(13, usuario.getStatusCadastro());
+			pstmt.setTimestamp(14, new java.sql.Timestamp(usuario.getDataCadastro().getTime()));
 			
 			pstmt.executeUpdate();
 			
@@ -46,6 +50,8 @@ public class UsuarioDAO {
 			pstmt.close();
 		}
 	}
+	
+	
 	
 	public void alterarUsuario(Usuario usuario) throws SQLException{
 		

@@ -3,24 +3,28 @@ package br.com.sb.entidade;
 public class Instituicao {
 
 	Integer idInstituicao;
-	Integer idUsuario;
+	Usuario usuario;
 	String nome;
 	String estado;
 	String endereco;
 	String telefone;
 	String email;
 	
+	public Instituicao(){
+		setUsuario(new Usuario());
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Integer getIdInstituicao() {
 		return idInstituicao;
 	}
 	public void setIdInstituicao(Integer idInstituicao) {
 		this.idInstituicao = idInstituicao;
-	}
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
 	}
 	public String getNome() {
 		return nome;

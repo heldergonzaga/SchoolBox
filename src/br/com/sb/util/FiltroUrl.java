@@ -39,17 +39,34 @@ public class FiltroUrl extends HttpServlet {
     protected void prossessRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
     	try {
     		
-    	 	String url = request.getRequestURI();
+    	 	String url = request.getRequestURI(); 
         	String template = "/jsp/template.jsp";///jsp/template.jsp
         	//SchoolBox
         	String urlFinal = "";
+        	String templateInterno = "";
         	String contexto = "";
         	String controllerPagina = "geral";
+        	String pathPagina = (String)request.getAttribute("pathPagina");
         	contexto = url.substring(0,10);
         	urlFinal = url.substring(10);
         	
-        	if (request.getAttribute("pathPagina") == null && request.getAttribute("pathPagina").equals("")){
         	
+        	if(request.getAttribute("templateInterno")!=null){
+        		templateInterno = (String) request.getAttribute("templateInterno");
+        	}
+        	if(urlFinal.indexOf("/tm/") != -1 ){
+        	
+        		urlFinal = urlFinal.replace("/tm", "");
+        		template = "/jsp/paginas/"+urlFinal.substring(1,urlFinal.lastIndexOf("/"))+"/template.jsp";
+        	}else if(templateInterno.equals("sim")){
+        		
+        		if (pathPagina != null ){
+        			template = "/jsp/"+pathPagina.substring(0,pathPagina.lastIndexOf("/"))+"/template.jsp";
+        		}
+    		}
+        	
+        	if (pathPagina == null ){
+            	
 	        	if(urlFinal.equals("")){
 	        		urlFinal = "index.jsp";
 	        	}else{
@@ -61,10 +78,13 @@ public class FiltroUrl extends HttpServlet {
 	        		}
 	        		urlFinal = urlFinal.replace(".sb", ".jsp");
 	        	}
-	        	urlFinal = "paginas/"+urlFinal;  
+	        	urlFinal = "paginas"+urlFinal;  
 	        	request.setAttribute("pathPagina", urlFinal); 
         	
-        	}
+        	}	
+    		
+        	
+        	
         	
         	//Ferifica a altenticação do usuario em questão...
         	getAutenticacao(request);

@@ -24,7 +24,7 @@ public class BoxDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("insert into box set idlocalizacao = ?, senha= ?, numero = ?");
-			pstmt.setInt(1, box.getIdLocalizacao());
+			pstmt.setInt(1, box.getLocalizacao().getIdLocalizacao());
 			pstmt.setString(2, box.getSenha());
 			pstmt.setInt(3, box.getNumero());
 			
@@ -42,7 +42,7 @@ public class BoxDAO {
 		
 		try {
 			pstmt = conn.prepareStatement("update box set idlocalizacao = ?, senha= ?, numero = ? where idbox = ?");	
-			pstmt.setInt(1, box.getIdLocalizacao());
+			pstmt.setInt(1, box.getLocalizacao().getIdLocalizacao());
 			pstmt.setString(2, box.getSenha());
 			pstmt.setInt(3, box.getNumero());
 			pstmt.setInt(4, box.getIdBox());
@@ -61,14 +61,15 @@ public class BoxDAO {
 		Box resultBox = null;
 		
 		try {
-			pstmt = conn.prepareStatement("select idlocalizacao, senha, numero from box where idbox = ?");
+			pstmt = conn.prepareStatement("select idbox, idlocalizacao, senha, numero from box where idbox = ?");
 			pstmt.setInt(1, box.getIdBox());
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				resultBox = new Box();
-				resultBox.setIdLocalizacao(rs.getInt("idlocalizacao"));
+				resultBox.setIdBox(rs.getInt("idbox"));
+				resultBox.getLocalizacao().setIdLocalizacao(rs.getInt("idlocalizacao"));
 				resultBox.setSenha(rs.getString("senha"));
 				resultBox.setNumero(rs.getInt("numero"));
 			}
@@ -87,12 +88,13 @@ public class BoxDAO {
 		List<Box> listaBoxs = new ArrayList<Box>();
 		
 		try {
-			pstmt = conn.prepareStatement("select idlocalizacao, senha, numero from box");
+			pstmt = conn.prepareStatement("select idbox, idlocalizacao, senha, numero from box");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				Box box = new Box();
-				box.setIdLocalizacao(rs.getInt("idlocalizacao"));
+				box.setIdBox(rs.getInt("idbox"));
+				box.getLocalizacao().setIdLocalizacao(rs.getInt("idlocalizacao"));
 				box.setSenha(rs.getString("senha"));
 				box.setNumero(rs.getInt("numero"));
 				
@@ -122,6 +124,36 @@ public class BoxDAO {
 		}finally{
 			pstmt.close();
 		}
+	}
+	
+	public List<Box> listarBoxsIdLocalizacao(Integer idLocalizacao) throws SQLException{
+
+		List<Box> listaBoxs = new ArrayList<Box>();
+		
+		try {
+			pstmt = conn.prepareStatement("select idbox, idlocalizacao, senha, numero from box where idlocalizacao = ?");
+			pstmt.setInt(1, idLocalizacao);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Box box = new Box();
+				box.getLocalizacao().setIdLocalizacao(rs.getInt("idlocalizacao"));
+				box.setSenha(rs.getString("senha"));
+				box.setNumero(rs.getInt("numero"));
+				box.setIdBox(rs.getInt("idbox"));
+				
+				listaBoxs.add(box);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pstmt.close();
+			rs.close();
+		}
+		
+		return listaBoxs;
 	}
 	
 	public static void main(String[] args) throws SQLException {
