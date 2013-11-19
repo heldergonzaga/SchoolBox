@@ -1,0 +1,12 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+@font-face {
+    font-family: "OpenSansLight";
+    font-style: normal;
+    font-weight: normal;
+    src: 
+	url("OpenSans-Light-webfont.eot?#iefix") 	format("embedded-opentype"), 
+	url("OpenSans-Light-webfont.woff") format("woff"), 
+	url("OpenSans-Light-webfont.ttf") 	format("truetype"), 
+	url("OpenSans-Light-webfont.svg#OpenSansLight") format("svg");
+}
