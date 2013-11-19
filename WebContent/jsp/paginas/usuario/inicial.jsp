@@ -2,14 +2,42 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script src="/SchoolBox/docs/ui/jquery.ui.button.js"></script>
+<script src="/SchoolBox/docs/ui/jquery.ui.dialog.js"></script>
 
 <h1>Usuarios</h1>
 
 <%@include file="/jsp/inc/incMensagem.jsp" %>
+<script>
+	$(function() {
+		$( "#modalConfirma" ).dialog({
+			resizable: false,
+			auto
+			height:190,
+			modal: true,
+			buttons: {
+				"Excluir ?": function() {
+					$( this ).dialog( "close" );
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+		
+		
+	});
+</script>
+<style>
 
- <table border=1>
+
+</style>
+
+
+    <p><a href="UsuarioController?acao=inserir" class="insert">Adicionar Usuário</a></p>
+ <table border="0" class="bordered" >
         <thead>
-            <tr>
+            <tr >
                 <th>Id</th> 
                 <th>Nome</th>
                 <th>Sobrenome</th>
@@ -26,9 +54,11 @@
                     </td>
                     <td><c:out value="${usuario.sobrenome}" /></td>
                     <td><c:out value="${usuario.email}" /></td>
-                    <td><a href="UsuarioController?acao=deletar&idUsuario=<c:out value="${usuario.idUsuario}"/>" class="del" >Deletar</a></td>
+                    <td><a href="UsuarioController?acao=deletar&idUsuario=<c:out value="${usuario.idUsuario}"/>" class="del" id="deletar" >Deletar</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
-    <p><a href="UsuarioController?acao=inserir" class="insert">Adicionar Usuário</a></p>
+
+    
+    

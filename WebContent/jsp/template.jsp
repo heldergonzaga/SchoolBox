@@ -2,36 +2,62 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@include file="inc/dependencia.jsp" %>
+
+
+
 <!doctype html>
-<html lang="pt-Br">
-<head>
-	<%@include file="inc/incHead.jsp" %>
-</head>
-<body>
-<div class="geral">
-	<div class="colunaTopo">
-		Sistema Schook Box, Seja bem vindo Fulano de tal.  
-	</div>
+<!--[if lt IE 9]><html class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
 	
-	<div class="colunaEsquerda">
-		<%@include file="inc/incMenu.jsp" %>
-	</div>
-	
-	<div class="colunaCentro">
-		<jsp:include page="<%=pathPagina%>" >
-			<jsp:param name="mensagem"  value="teste" />
-		</jsp:include>
-	</div>
-	
-	<div class="colunaDieita">
-		Mensagens do sistema
-	</div>
-	
-	
-	<div class="colunaBase">
+	<head>
 		
+		<%@include file="inc/incHead.jsp" %>
+	</head>
+	
+	<body lang="pt-br">
+	
+	<div class="geral">
+		<div class="colunaTopo">
+			<div class="secao">
+					<span class="logo"><img src="<%=ctx%>/docs/images/logo.jpg"/></span>	
+					<span class="logado">Sistema Schook Box, Seja bem vindo , <b>Fulano de tal</b> . </span>
+			</div>
+		</div>
+		<div class="colunaEsquerda">
+			<%@include file="inc/incMenu.jsp" %>
+			
+			<!--  div class="secao">
+				<h1>Mensagens do sistema</h1>
+					<div class="conteudo">
+					teste 
+					</div>
+			</div-->
+		</div>
+		<div class="colunaCentro">
+		
+			<div class="secao">
+				<div class="conteudo">
+						<jsp:include page="<%=pathPagina%>" >
+						<jsp:param name="mensagem"  value="teste" />
+					</jsp:include>
+				</div>
+			</div>
+			
+		
+			
+		</div>
+		
+		
+		
+		
+		<div class="colunaBase"> 
+		
+			Todos os direitos reservados	
+				
+		</div>
 	</div>
-</div>
-<%@include file="inc/incEndBody.jsp" %>
-</body>
+		
+	<%@include file="inc/incEndBody.jsp" %>
+	</body>
+	
 </html>

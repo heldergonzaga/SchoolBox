@@ -1,10 +1,146 @@
-body {
-	font-size: 72.5%; 
-	font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
 }
+ol, ul {
+    list-style: none outside none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.lt-ie8 .clearfix {
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix:after {
+    clear: both;
+}
+.hide-text {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: rgba(0, 0, 0, 0);
+    font: 0px/0 a;
+    text-shadow: none;
+}
+.input-block-level {
+    -moz-box-sizing: border-box;
+    display: block;
+    min-height: 30px;
+    width: 100%;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+label,imput {
+	
+	margin: 10px;
+}
+audio, canvas, video {
+    display: inline-block;
+}
+audio:not([controls]) {
+    display: none;
+}
+html {
+    font-size: 100%;
+}
+a:focus {
+    outline: thin dotted #333333;
+    outline-offset: -2px;
+}
+a:hover, a:active {
+    outline: 0 none;
+}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+img {
+    border: 0 none;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+#map_canvas img {
+    max-width: none;
+}
+
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0 none;
+    padding: 0;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+input[type="search"] {
+    -moz-box-sizing: content-box;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+body {
+    background-color: #F0F0F0;
+    color: #465A64;
+    font-family: OpenSansLight,helvetica,arial;
+    margin: 0;
+    padding: 0;
+}
+.link-like, a {
+    color: #00A0D7;
+    text-decoration: none;
+    font-family: OpenSansLight,helvetica,arial;
+}
+.link-like:hover, a:hover {
+    color: #0080AC;
+    text-decoration: none;
+    font-family: OpenSansLight,helvetica,arial;
+}
+.img-rounded {
+    border-radius: 6px 6px 6px 6px;
+}
+.img-polaroid {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 4px;
+}
+.img-circle {
+    border-radius: 500px 500px 500px 500px;
+}
+
+
+
 
 table {
 	font-size: 1em;
+}
+.geral{
+	width: 1005px;
+  margin: 0 auto;
+  padding-bottom: 76px;
 }
 
 .demo-description {
@@ -25,11 +161,146 @@ table {
 }
 
 .colunaTopo {width:100%}
-.colunaEsquerda {width:13%}
-.colunaCentro {width:65%}
+.colunaEsquerda {width:26%}
+.colunaCentro {width:74% }
 .colunaDieita {width:20%}
 .colunaBase {width:100%}
 .colunaFull {width:100% !important}
 
 .error{color:red}
 input.error {border:1px solid red} 
+
+
+
+
+
+
+ 
+.secao {
+    background-color: #FFFFFF;
+    margin-bottom: 12px;
+    margin:10px;
+}
+.secao-cabecalho, .secao {
+    padding: 22px 27px 40px;
+}
+
+
+.secao h1 {
+    border-bottom: 1px solid #ABB2B6;
+    padding-bottom: 6px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+
+
+
+
+ p {
+    margin-bottom: 1.3em;
+}
+p {
+    font-size: 1.125em;
+}
+p {
+    color: #465A64;
+}
+
+
+
+
+
+
+
+
+
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.ui-widget-content {border:0px!important;}
+.logado {float: right;}
+
+

@@ -56,7 +56,7 @@
 			  $('.cep').mask('00000-000');
 			  $('.phone').mask('0000-0000');
 			  $('.phone_with_ddd').mask('(00) 0000-0000');
-			  $('.phone_us').mask('(000) 000-0000');
+			  $('.phone_us').mask('(000) 000-0000'); c
 			  $('.mixed').mask('AAA 000-S0S');
 			 */  
 			  
@@ -77,10 +77,9 @@
 	
     <form method="POST" action='UsuarioController' name="formCadastroUsuario" id="formCadastroUsuario">
        	
-       		<p class="comment-notes">Para o cadastro os campos obrigatórios são marcados com: <span class="required">*</span></p>	
-   
-       	
-       		id : <input type="text" readonly="readonly" name="idUsuario"
+       		<p class="ui-state-error ui-corner-all">Para o cadastro os campos obrigatórios são marcados com: <span class="required">*</span></p>	
+       		
+       		<input type="hidden" readonly="readonly" name="idUsuario"
             value='<c:out value="${usuario.idUsuario}" />' /> <br />  
             
         	<label for="nome">Nome <span class="required">*</span></label>
@@ -154,8 +153,8 @@
            
            
             <c:if test="${not empty usuario}">
-	  		<input type="checkbox" name="redefinirSenha" value="sim" onclick="redefinirSenhaR(this);" > Redefinir Senha <br/>
-	 	   </c:if>
+	  			<input type="checkbox" name="redefinirSenha" value="sim" onclick="redefinirSenhaR(this);" > Redefinir Senha <br/>
+	 	  	</c:if>
            	<c:if test="${not empty usuario}">
           	<span id="senha" style="display:none">
           	</c:if>

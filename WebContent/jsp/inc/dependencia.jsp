@@ -6,7 +6,7 @@
 	String pathPagina = "paginas/index.jsp";
 
  	if(request.getAttribute("pathPagina")!= null ){
- 		pathPagina	= (String)request.getAttribute("pathPagina");
+ 		pathPagina	= "/jsp/"+(String)request.getAttribute("pathPagina");
  	}
 
  %>
