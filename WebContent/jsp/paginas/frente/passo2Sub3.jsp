@@ -16,7 +16,7 @@
 	</script>
 	
 
-	<form action="passo3.sb">	
+	<form action="/SchoolBox/tm/frente/passo3.sb">	
 		<h3 class="ui-widget-header ui-corner-all">Seus Boxes Reservados são:</h3>
 		<div><br/></div>
 		 
