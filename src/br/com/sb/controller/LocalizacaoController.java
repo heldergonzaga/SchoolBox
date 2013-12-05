@@ -20,7 +20,6 @@ import br.com.sb.util.FiltroUrl;
 /**
  * Servlet implementation class CargoController
  */
-@WebServlet("/LocalizacaoController")
 public class LocalizacaoController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -29,8 +28,8 @@ public class LocalizacaoController extends HttpServlet {
 	public List<Localizacao> listaLocalizacoes;
 	String forward;
 	
-	private static String INICIAL 			= "/jsp/paginas/localizacao.jsp";
-	private static String CADASTRAR_ALTERAR = "/jsp/paginas/cadastrarLocalizacao.jsp";
+	private static String INICIAL 			= "paginas/localizacao.jsp";
+	private static String CADASTRAR_ALTERAR = "paginas/cadastrarLocalizacao.jsp";
 	private static String CARREGA_INICIAL   = "/LocalizacaoController?pagina=carregarLocalizacao";
 	
     public LocalizacaoController() {

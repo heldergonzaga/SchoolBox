@@ -102,7 +102,7 @@
 		Tenha em mãos seus dados básicos de identificação, assim como o seu cartão de credito, 
 		caso deseje pagar por essa modalidade.
 		
-		
+		<%@include file="/jsp/inc/incMensagem.jsp" %>
 		<form action="/SchoolBox/FrontController" id="formCadastroUsuario" method="post">   
 			<input type="hidden" value="1" name="passo">
 			<fieldset>

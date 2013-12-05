@@ -302,5 +302,20 @@ table {
 
 .ui-widget-content {border:0px!important;}
 .logado {float: right;}
-
+#carregando { 
+		
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		background: #f9f9f9;
+		padding: 14px;
+		position: absolute;
+		left: 50%;
+		right: 50%;
+		width: 156px;
+		margin-left: -84px;
+		top: 50%;
+		bottom: 50%;
+		z-index:10;
+	}
 

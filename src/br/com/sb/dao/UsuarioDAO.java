@@ -80,6 +80,41 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public Usuario buscarUsuario(String email) throws SQLException{
+		
+		Usuario resultUsuario = null;
+		
+		try {
+			pstmt = conn.prepareStatement("select idusuario, idcargo, nome, sobrenome, cpf, email, bairro, cidade, uf, complemento, numero, login from usuario where email = ?");
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				resultUsuario = new Usuario();
+				resultUsuario.setIdUsuario(rs.getInt("idusuario"));
+				resultUsuario.setBairro(rs.getString("bairro"));
+				resultUsuario.setCidade(rs.getString("cidade"));
+				resultUsuario.setComplemento(rs.getString("complemento"));
+				resultUsuario.setCpf(rs.getString("cpf"));
+				resultUsuario.setEmail(rs.getString("email"));
+				resultUsuario.setIdCargo(rs.getInt("idcargo"));
+				resultUsuario.setLogin(rs.getString("login"));
+				resultUsuario.setNome(rs.getString("nome"));
+				resultUsuario.setSobrenome(rs.getString("sobrenome"));
+				resultUsuario.setNumero(rs.getString("numero"));
+				resultUsuario.setUf(rs.getString("uf"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pstmt.close();
+			rs.close();
+		}
+		return resultUsuario;
+	}
+	
 	public Usuario buscarUsuario(Integer idUsuario) throws SQLException{
 		
 		Usuario resultUsuario = null;

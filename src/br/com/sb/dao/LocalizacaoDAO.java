@@ -125,17 +125,31 @@ public class LocalizacaoDAO {
 	
 	public List<Localizacao> listarLocalizacoesIdInstituicao(Integer idInstituicao) throws SQLException{
 
+		return listarLocalizacoesIdInstituicao(idInstituicao,0);
+	}	
+		
+	public List<Localizacao> listarLocalizacoesIdInstituicao(Integer idInstituicao,int limite) throws SQLException{
 		List<Localizacao> listaLocalizacoes = new ArrayList<Localizacao>();
 		
 		try {
-			pstmt = conn.prepareStatement("select idLocalizacao, idInstituicao, nome from localizacao where idinstituicao = ?");
+			if(limite == 0){
+				pstmt = conn.prepareStatement("select idLocalizacao, idInstituicao, nome from localizacao where idinstituicao = ?");
+			}else{
+				pstmt = conn.prepareStatement("select idLocalizacao, idInstituicao, nome from localizacao where idinstituicao = ? limit ?");
+			}
+			
+		
 			pstmt.setInt(1, idInstituicao);
+			if(limite > 0){
+				pstmt.setInt(2, limite);
+			}
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				Localizacao localizacao = new Localizacao();
-				localizacao.getInstituicao().setIdInstituicao(rs.getInt("idLocalizacao"));
-				localizacao.setIdLocalizacao(rs.getInt("idInstituicao"));
+				localizacao.getInstituicao().setIdInstituicao(rs.getInt("idinstituicao"));
+				localizacao.setIdLocalizacao(rs.getInt("idlocalizacao"));
 				localizacao.setNome(rs.getString("nome"));
 				
 				listaLocalizacoes.add(localizacao);
@@ -147,8 +161,8 @@ public class LocalizacaoDAO {
 			pstmt.close();
 			rs.close();
 		}
-		
 		return listaLocalizacoes;
+	
 	}
 	
 	public static void main(String[] args) throws SQLException {

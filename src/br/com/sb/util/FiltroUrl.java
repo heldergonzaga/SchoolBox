@@ -55,7 +55,6 @@ public class FiltroUrl extends HttpServlet {
         		templateInterno = (String) request.getAttribute("templateInterno");
         	}
         	if(urlFinal.indexOf("/tm/") != -1 ){
-        	
         		urlFinal = urlFinal.replace("/tm", "");
         		template = "/jsp/paginas/"+urlFinal.substring(1,urlFinal.lastIndexOf("/"))+"/template.jsp";
         	}else if(templateInterno.equals("sim")){

@@ -9,7 +9,7 @@
 
 	function cadastrarLocalizacao(){
 		
-		document.frmLocalizacao.action = "<%= request.getContextPath() %>/LocalizacaoController";
+		document.frmLocalizacao.action = "/SchoolBoc/LocalizacaoController";
 		document.frmLocalizacao.pagina.value = "carregarCadastroLocalizacao";
 		document.frmLocalizacao.submit();
 		

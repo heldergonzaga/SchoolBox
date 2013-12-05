@@ -22,8 +22,9 @@
 			</div>
 			<div class="secao">
 				<div class="conteudo">
-						<jsp:include page="<%=pathPagina%>" >
-						<jsp:param name="mensagem"  value="teste" />
+					<div id="carregando" style="display:none;"><img alt=" " src="/SchoolBox/docs/images/Carregando.gif"> Carregando ...</div> 
+					<jsp:include page="<%=pathPagina%>" >
+						<jsp:param name="mensagem"  value=" " />
 					</jsp:include>
 				</div>
 			</div>

@@ -14,7 +14,7 @@
 	}
 	#effect {
 		position: relative;
-		width: 80%;
+		width: 100%;
 		
 		padding: 0.4em;
 	}
@@ -26,8 +26,8 @@
 	
 	
 	label {
-		display: inline-block; width: 11em;
-	}
+		display: inline-block; width: 13em;
+	} 
 	fieldset div {
 		margin-bottom: 2em;
 	}
@@ -37,7 +37,7 @@
 	.ui-tooltip {
 		width: 210px;
 	}
-	#format {}
+	
 	</style>
 	<script>
 	$(function() {
@@ -51,6 +51,7 @@
 		}); 
 	
 		$( "#radio" ).buttonset();
+		$( "#opcaoPagamento" ).buttonset();
 		
 	
 	});
@@ -61,36 +62,55 @@
 
 <div id="effect" class="ui-widget-content ui-corner-all">
 	<h3 class="ui-widget-header ui-corner-all">Passo 3 - Informações de pagamento</h3>
-	
+	<div><br/></div>
 	<p>
-		Agora selecione sua forma de assinatura e periodiciade.
+		Agora selecione a periodicidade de sua contratação:
 	</p>
-		<form>
+		<form action="confirmacao.sb" >
 			
 				<div>
-				
+				<label for="instituicao">Peiodicidades Disponíveis:</label>
 					<div id="radio">
-					<label for="instituicao">Peiodicidade</label>
-						<input type="radio" id="radio1" name="radio" /><label for="radio1">Mensal</label>
-						<input type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Semestral</label>
-						<input type="radio" id="radio3" name="radio" /><label for="radio3">Anual</label>
+						<input type="radio" id="radio3" name="radio" checked="checked"/><label for="radio3">Anual</label>
+						<input type="radio" id="radio2" name="radio"  /><label for="radio2">Semestral</label>
+					</div>
+				</div>
+				
+				<div>
+					<table border="0" class="bordered" >
+				        <thead>
+				            <tr >
+				                <th>Detalhamento de valores</th> 
+				            </tr>
+				        </thead>
+				        <tbody>
+				                <tr>
+				                    
+				                    <td>
+					                    <ul>
+											<li>1ª parcela: R$ 20,00</li>
+											<li>2ª parcela: R$ 20,00</li>
+											<li>3ª parcela: R$ 20,00</li>
+											<li>4ª parcela: R$ 20,00</li>
+											<li>5ª parcela: R$ 20,00</li>
+											<li>6ª parcela: R$ 20,00</li>
+										</ul>
+									</td>
+				                </tr>
+				        </tbody>
+				    </table>
+				</div>
+				<div>
+					<label for="instituicao">Selecione o Tipo de Cartão:</label>
+					<div id="opcaoPagamento">
+						<input type="radio" id="fmaPag1" name="formapagamento" checked="checked"/><label for="fmaPag1"> Visa</label>
+						<input type="radio" id="fmaPag2" name="formapagamento"  /><label for="fmaPag2"> Master Card</label>
 					</div>
 				</div>
 				<div>
 					<label for="instituicao">Renovação automática</label>
 					<input type="checkbox" id="check2" />				
-				<div>
-					<label for="instituicao">Valor da compra</label>  R$ 120,00
 				</div>
-				
-				
-				<div>
-					<label for="instituicao">Forma de Pagamento</label>
-					<select id="instituicao" name="instituicao">
-						<option value="">Selecione</option>
-						<option value="1">Cartão</option>
-					</select>
-				</div> 
 				<hr />
 				<input type="submit" value="Avançar" />
 		</form>

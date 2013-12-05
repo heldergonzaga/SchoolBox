@@ -14,7 +14,7 @@
 	}
 	#effect {
 		position: relative;
-		width: 80%;
+		width: 100%;
 		
 		padding: 0.4em;
 	}
@@ -60,22 +60,15 @@
 </h1>
 
 <div id="effect" class="ui-widget-content ui-corner-all">
-	<h3 class="ui-widget-header ui-corner-all">Confirmação de dados - Informações de pagamento</h3>
-	
-	<p>
-		confira seus dados e confirme a contratação do seu aluguel.
-	</p>
+	<h3 class="ui-widget-header ui-corner-all">Parabens! - Sua contratação foi feita com sucesso.</h3>
 		<form action="inicial.sb">
-			
 			<fieldset>
-			
-				
-				
-				<h2>Parabens!, você concluiu o processo de aluguel:
-				
-				<br/>
-				
-				confira em seu emaikl o codigo de ativação.
+			<p></p>
+				<h2>
+					Parabens!, você concluiu o processo de aluguel:
+					<br/>
+					Foi enviado para o seu email, as informações de seu aluguel<br>
+					Entre as informações enviadas, está a senha para os boxes selecionados.
 				
 				</h2>
 				

@@ -28,13 +28,7 @@
 		
 	});
 </script>
-<style>
-
-
-</style>
-
-
-    <p><a href="UsuarioController?acao=inserir" class="insert">Adicionar Usuário</a></p>
+ <p><a href="UsuarioController?acao=inserir" class="insert">Adicionar Usuário</a></p>
  <table border="0" class="bordered" >
         <thead>
             <tr >

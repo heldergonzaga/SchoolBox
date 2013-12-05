@@ -23,7 +23,7 @@
 <script type="text/javascript">
 
 	function cadastrarLocalizacao(){
-		document.frmLocalizacao.action = "<%= request.getContextPath() %>/LocalizacaoController";
+		document.frmLocalizacao.action = "/ScoolBox/LocalizacaoController";
 		document.frmLocalizacao.pagina.value = "cadastrarLocalizacao";
 		document.frmLocalizacao.submit();
 	}
