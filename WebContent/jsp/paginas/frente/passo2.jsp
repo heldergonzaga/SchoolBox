@@ -133,7 +133,7 @@
 		    	$('#carregando').fadeIn();
 		    	var trTabela = $(this).parent().parent();
 		    	var id = $(this).attr("id"); 
-		    	var string = 'id='+ id ;
+		    	var string = 'idbox='+ id+'&passo=2&subpasso=4';
 		    	$.ajax({
 		    	 type: "POST",
 		    	 url: "/SchoolBox/FrontController",
@@ -143,6 +143,7 @@
 		    		trTabela.slideUp('slow', function() {$(this).remove();});
 		    		$('#carregando').fadeOut();
 		    	 	atualizaQuantidadeDisponivel();
+		    	 	atualizarMensagens();
 		    	 }
 		    	 });
 		    	return false;
@@ -178,15 +179,18 @@
 	        	$('#quantidadeDisponivel').html('');
 	        	$('#carregando').fadeOut();
 	        });
+	        atualizarMensagens();
 	        
 	    });
 	    
 	    $('#localizacao').change(function() {
 	    	atualizaQuantidadeDisponivel();
+	    	atualizarMensagens();
 	    });
 	    function atualizaQuantidadeDisponivel(){
 	    	$('#carregando').fadeIn();
 	        $('#quantidadeDisponivel').html('').load( "/SchoolBox/FrontController?passo=2&subpasso=2&idInstituicao="+$('#instituicao').val()+"&idLocalizacao="+$('#localizacao').val(),function(){
+	        	atualizarMensagens();
 	        	var qtdDisp = 0; 
 	        	try{ 
 	        		qtdDisp = $("#qtdBoxReserva").val(); 
@@ -234,6 +238,7 @@
 	    	 cache: false,
 	    	 success: function(){
 	    		trTabela.slideUp('slow', function() {$(this).remove();});
+	    		atualizarMensagens();
 	    	 	$('#carregando').fadeOut();
 	    	 }
 	    	 });

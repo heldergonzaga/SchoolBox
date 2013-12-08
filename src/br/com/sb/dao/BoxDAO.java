@@ -56,6 +56,23 @@ public class BoxDAO {
 		}
 	}
 	
+	public boolean liberarBox(int idBox) throws SQLException{
+		
+		try {
+			pstmt = conn.prepareStatement("update box set statusLocacao = ?  where idbox = ?");	
+			pstmt.setInt(1, 0);
+			pstmt.setInt(2,idBox);
+			pstmt.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pstmt.close();
+		}
+		return false;
+	}
+	
 	public boolean reservarBox(Integer statusLocacao, Integer idBox) throws SQLException{
 		
 		try {

@@ -30,6 +30,10 @@
 		$("input[type=submit], a.insert").button().click(function( event ) {});
 	
 	});
+	function atualizarMensagens(){
+		$("#mensagensSistema").html('').load("/SchoolBox/jsp/inc/incMensagem.jsp");
+	}
+	
 	
 </script>
 <style>

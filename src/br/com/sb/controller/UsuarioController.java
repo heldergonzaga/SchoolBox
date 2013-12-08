@@ -58,7 +58,7 @@ public class UsuarioController extends HttpServlet {
 	            forward = LISTA_USUARIO;
 	           
 	            try {
-					request.setAttribute("usuarios", dao.listarUsuarios());
+					request.setAttribute("usuarios", dao.listarUsuarios()); 
 				} catch (SQLException e) {
 					request.setAttribute("mensagemErro", "Problemas Listar usuários! Consulte o administrador");
 				} 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,24 +44,18 @@ public class FrontController extends HttpServlet {
     ProcessoCadastro processoCadastro;
     private UsuarioDAO dao;    
    
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public FrontController() {
         super();
         dao = new UsuarioDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);       
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int passo;
@@ -177,6 +172,28 @@ public class FrontController extends HttpServlet {
 					}
 				}
 
+			} else if(subPasso.equals("4")){
+				
+				
+				try {
+					processoCadastro = (ProcessoCadastro) request.getSession().getAttribute("processoCadastro");
+					
+					int idBox = Integer.parseInt(request.getParameter("idbox"));
+					
+					if(new BoxDAO().liberarBox(idBox)){
+						removeBoxReservado(processoCadastro, idBox);
+						request.getSession().setAttribute("processoCadastro", processoCadastro);
+					}
+					
+				} catch (ConcurrentModificationException e) {
+					request.setAttribute("mensagemErro", "Erro: Tente novamente.");
+				} catch (NumberFormatException e) {
+					request.setAttribute("mensagemErro", "Probelma em liberar Box");
+				} catch (SQLException e) {
+					request.setAttribute("mensagemErro", "Probelma em liberar Box");
+				}
+				 
+				
 			}
 			
 			break;
@@ -191,10 +208,18 @@ public class FrontController extends HttpServlet {
 			
 		default:
 			break;
+		}	
+	}
+	
+	protected void removeBoxReservado(ProcessoCadastro processoCadastro, int idBox){ 
+		
+		for (Box box : processoCadastro.getListaBoxesCadastrados()) {
+			
+			if(box.getIdBox() == idBox){
+				processoCadastro.getListaBoxesCadastrados().remove(box);
+			}
 		}
 		
-
-			
 	}
 	protected void atualizaBoxesReservados(ProcessoCadastro processoCadastro, List<Box> listaBoxesReservados){
 		processoCadastro.getListaBoxesCadastrados().addAll(listaBoxesReservados);

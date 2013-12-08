@@ -39,7 +39,7 @@
                     <td><c:out value="${box.localizacao.idLocalizacao}"/></td>
                     <!-- td>MOD-002</td-->
                     <td><c:out value=""/>R$ 20,00</td>
-                    <td><a href="#" class="delete">Excluir</a></td>
+                    <td><a href="#" class="delete" id="<c:out value="${box.idBox}"/>">Excluir</a></td>
                 </tr>
 				
 				

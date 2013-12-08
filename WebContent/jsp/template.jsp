@@ -15,7 +15,7 @@
 	</head>
 	
 	<body lang="pt-br">
-	<div id="carregando" > <img alt=" " src="/SchoolBox/docs/images/Carregando.gif"> Carregando ...</div> 
+	<div id="carregando" style="display:none;" > <img alt=" " src="/SchoolBox/docs/images/Carregando.gif"> Carregando ...</div> 
 	<div class="geral">
 		<div class="colunaTopo">
 			<div class="secao">
